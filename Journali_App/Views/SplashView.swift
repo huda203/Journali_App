@@ -7,29 +7,32 @@
 
 import SwiftUI
 
-struct Journali_Splash_View: View {
+struct SplashView: View {
     var body: some View {
         ZStack {
-            Color("Background")
+            LinearGradient (
+            colors: [.black ,Color("SplashMid"), Color("SplashBottom")],
+            startPoint: .top,
+            endPoint: .bottom
+            )
                 .ignoresSafeArea()
             
             VStack {
                 Image("Splash")
                     .resizable()
                     .scaledToFit()
-                    .frame(width:100, height:100)
+                    .frame(width:81.46, height:106)
                 Text("Journali")
-                    .font(.largeTitle)
-                    .bold()
+                    .font(.system(size: 42,  weight: .black))
                     .foregroundStyle(.white)
                 
                 Text("Your thoughts, your story")
-                    .font(.caption)
-                    .foregroundStyle(.gray)
+                    .font(.system(size: 18, weight: .light ))
+                    .foregroundStyle(.white)
             }
         }
     }
 }
 #Preview {
-    Journali_Splash_View()
+    SplashView()
 }

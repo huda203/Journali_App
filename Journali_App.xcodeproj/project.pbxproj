@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		000000000000000000000010 /* Journali_App */ = {
+		C249665930A4ED4E0066CEA1 /* Journali_App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Journali_App;
 			sourceTree = "<group>";
@@ -30,7 +30,7 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000010 /* Journali_App */,
+				C249665930A4ED4E0066CEA1 /* Journali_App */,
 				000000000000000000000020 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,7 +57,7 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
-				000000000000000000000010 /* Journali_App */,
+				C249665930A4ED4E0066CEA1 /* Journali_App */,
 			);
 			name = Journali_App;
 			productName = MyApp;
