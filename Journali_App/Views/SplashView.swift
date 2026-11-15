@@ -11,7 +11,7 @@ struct SplashView: View {
     var body: some View {
         ZStack {
             LinearGradient (
-            colors: [.black ,Color("SplashMid"), Color("SplashBottom")],
+                colors: [Color(.systemBackground), Color("SplashMid"), Color("SplashBottom")],
             startPoint: .top,
             endPoint: .bottom
             )
@@ -24,11 +24,11 @@ struct SplashView: View {
                     .frame(width:81.46, height:106)
                 Text("Journali")
                     .font(.system(size: 42,  weight: .black))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
                 
                 Text("Your thoughts, your story")
                     .font(.system(size: 18, weight: .light ))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
             }
         }
     }

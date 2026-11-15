@@ -26,7 +26,7 @@ struct JournalCardView: View {
                 .foregroundStyle(Color("TextSecondary"))
             Text(entry.content)
                 .font(.system(size: 18))
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -45,5 +45,5 @@ struct JournalCardView: View {
         viewModel: JournalViewModel()
     )
     .padding()
-    .background(.black)
+    //.background(.black)
 }
