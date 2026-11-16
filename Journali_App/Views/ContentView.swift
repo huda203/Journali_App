@@ -4,6 +4,9 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = JournalViewModel()
     @State private var showAddSheet = false
+    @State private var selectedEntry: JournalEntry? = nil
+    @State private var entryToDelete: JournalEntry? = nil
+    @State private var showDeleteAlert = false
     var body: some View {
         NavigationStack {
             ZStack {
@@ -26,6 +29,20 @@ struct ContentView: View {
                 } else {
                     List(viewModel.displayedEntries) { entry in
                         JournalCardView(entry: entry ,viewModel: viewModel)
+                            .onTapGesture {
+                                selectedEntry = entry
+                            }
+                            .swipeActions(edge: .trailing){
+                                Button(role: .destructive) {
+                                    entryToDelete = entry
+                                    showDeleteAlert = true
+                                } label: {
+                                    Image(systemName: "trash.fill")
+                                    
+                                }
+                            }
+                        
+                        
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
                     }
@@ -37,6 +54,7 @@ struct ContentView: View {
 
             .navigationTitle("Journal")
             
+            .searchable(text: $viewModel.searchText)
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
@@ -51,10 +69,27 @@ struct ContentView: View {
             .sheet(isPresented: $showAddSheet) {
                 JournalEditorView(viewModel: viewModel)
             }
+                    .sheet(item: $selectedEntry) { entry in
+                        JournalEditorView(viewModel: viewModel, entry: entry)
+                    }
+                    .alert("Delete Journal", isPresented: $showDeleteAlert) {
+                        Button("Cancel", role: .cancel) { }
+                        Button("Delete", role: .destructive) {
+                            if let entryToDelete {
+                                viewModel.deleteEntry(entry: entryToDelete)
+                            }
+                        }
+                    } message: {
+                        Text("Are you sure you want to delete this journal?")
+                    }
+                        
+                        
+                    
+                
+            }
             }
         }
             
-    }
 
 
 #Preview {

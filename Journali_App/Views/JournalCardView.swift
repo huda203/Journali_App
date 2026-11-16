@@ -17,9 +17,14 @@ struct JournalCardView: View {
                     .font(.system(size: 24, weight: .semibold))
                     .foregroundStyle(Color("TextAccent"))
                 Spacer()
-                Image(systemName: entry.isBookmarked ? "bookmark.fill" : "bookmark")
-                    .foregroundStyle(Color("TextAccent"))
-                
+                Button {
+                    viewModel.toggleBookmark(entry: entry)
+                } label: {
+                    
+                    Image(systemName: entry.isBookmarked ? "bookmark.fill" : "bookmark")
+                        .foregroundStyle(Color("TextAccent"))
+                }
+                .buttonStyle(.plain)
             }
             Text(entry.date.formatted(date: .numeric, time: .omitted))
                 .font(.system(size: 14))
@@ -34,10 +39,6 @@ struct JournalCardView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
-    
-     
-    
-    
 
 #Preview {
     JournalCardView(
