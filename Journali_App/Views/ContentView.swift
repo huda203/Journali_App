@@ -3,6 +3,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = JournalViewModel()
+    @State private var showAddSheet = false
     var body: some View {
         NavigationStack {
             ZStack {
@@ -33,11 +34,28 @@ struct ContentView: View {
                     }
                 
             }
+
             .navigationTitle("Journal")
+            
+            .toolbar{
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button{
+                        showAddSheet = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                        
+                    }
+                    
+                }
+            .sheet(isPresented: $showAddSheet) {
+                JournalEditorView(viewModel: viewModel)
+            }
+            }
         }
             
     }
-}
+
 
 #Preview {
     ContentView()
