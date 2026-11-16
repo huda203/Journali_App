@@ -12,6 +12,7 @@ struct JournalEditorView: View {
     var entry: JournalEntry? = nil
     @State private var title = ""
     @State private var content = ""
+    @State private var showDiscardAlert = false
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationStack {
@@ -37,7 +38,11 @@ struct JournalEditorView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading){
                     Button {
-                        dismiss()
+                        if title != (entry?.title ?? "") || content != (entry?.content ?? "") {
+                            showDiscardAlert = true
+                            } else {
+                                dismiss()
+                            }
                     } label : {
                         Image(systemName: "xmark")
                     }
@@ -64,6 +69,12 @@ struct JournalEditorView: View {
                     title = entry.title
                     content = entry.content
                 }
+            }
+            .alert("Are you sure you want to discard changes on this journal?", isPresented: $showDiscardAlert){
+                Button("Discard Changes", role: .destructive) {
+                    dismiss()
+                }
+                Button("Keep Editing", role: .cancel){}
             }
                 }
             }

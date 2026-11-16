@@ -56,6 +56,18 @@ struct ContentView: View {
             
             .searchable(text: $viewModel.searchText)
             .toolbar{
+                ToolbarItem(placement: .topBarTrailing){
+                    Menu{
+                        Button("Sort by Bookmark") {
+                            viewModel.sortOption = .bookmark
+                        }
+                        Button("sort by Entry Date"){
+                            viewModel.sortOption = .date
+                        }
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease")
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
                         showAddSheet = true
