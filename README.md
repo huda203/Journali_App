@@ -1,6 +1,6 @@
 # Journali <img width="25" alt="Journali icon" src="https://github.com/user-attachments/assets/19a387f4-4194-4a47-8e0e-21a18012d92e" />
 
-> Your thoughts, your story
+
 
 Journali is a simple journaling app for iPhone that lets you write, save, and organize your daily thoughts in one place.
 
