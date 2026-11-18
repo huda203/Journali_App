@@ -14,13 +14,20 @@ import SwiftUI
                     ContentView()
                 }
             }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-                    withAnimation {
-                        showSplash = false
-                    }
+            .task {
+                try? await Task.sleep(for: .seconds(2))
+                withAnimation {
+                    showSplash = false
                 }
             }
+            //.onAppear {
+              //  DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                //    withAnimation {
+                  //      showSplash = false
+            
+                   // }
+              //  }
+           // }
                 .preferredColorScheme(.dark)
         }
     }

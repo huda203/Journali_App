@@ -17,9 +17,9 @@ class JournalViewModel: ObservableObject {
         let newEntry = JournalEntry(title:title, date:Date(), content:content, isBookmarked:false)
         entries.append(newEntry)
     }
-        func deleteEntry(entry: JournalEntry) {
-            entries.removeAll {$0.id == entry.id}
-        }
+    func deleteEntry(entry: JournalEntry) {
+        entries.removeAll {$0.id == entry.id}
+    }
     func toggleBookmark(entry: JournalEntry){
         if let index = entries.firstIndex(where:{$0.id == entry.id}) {
             entries[index].isBookmarked.toggle()
@@ -41,9 +41,13 @@ class JournalViewModel: ObservableObject {
                 $0.content.localizedStandardContains(searchText)
             }
         }
-        if sortOption == .bookmark {
-            result = result.filter { $0.isBookmarked}
+        
+        return result.sorted {
+            if sortOption == .bookmark && $0.isBookmarked != $1.isBookmarked {
+                return $0.isBookmarked
+            }
+            return $0.date > $1.date
         }
-        return result.sorted { $0.date > $1.date}
     }
 }
+
