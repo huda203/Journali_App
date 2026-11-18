@@ -4,7 +4,7 @@
 
 Journali is a simple journaling app for iPhone that lets you write, save, and organize your daily thoughts in one place.
 
-## ✨ Main Features
+##  Main Features
 - Create a new journal entry
 - Edit any journal by tapping on it
 - Delete a journal by swiping, with a confirmation alert
@@ -13,7 +13,7 @@ Journali is a simple journaling app for iPhone that lets you write, save, and or
 - Sort journals by bookmark or by entry date
 - Get a confirmation before discarding unsaved changes
 
-## 🛠️ Technologies Used
+##  Technologies Used
 - Swift <img src="https://cdn.simpleicons.org/swift" width="20" />
 - SwiftUI <img src="https://cdn.simpleicons.org/swift/0D96F6" width="20" /> 
 - MVVM (Model-View-ViewModel)
